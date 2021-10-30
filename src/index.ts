@@ -11,7 +11,7 @@ export function numberToText(number: number, level = 0): string {
     return 'سالب ' + numberToText(number, level)
   }
 
-  if (number == 0) {
+  if (number === 0) {
     if (level === 0) {
       return 'سفر'
     } else {
