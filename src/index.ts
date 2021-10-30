@@ -1,41 +1,41 @@
 export function numberToText(num: number): string {
-  const english = [
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-    'ten',
-    'eleven',
-    'twelve',
-    'thirteen',
-    'fourteen',
-    'fifteen',
-    'sixteen',
-    'seventeen',
-    'eighteen',
-    'nineteen',
+  const kurdish = [
+    'سفر',
+    'یەک',
+    'دوو',
+    'سێ',
+    'چوار',
+    'پێنج',
+    'شەش',
+    'حەوت',
+    'هەشت',
+    'نۆ',
+    'دە',
+    'یانزە',
+    'دوانزە',
+    'سیانزە',
+    'چواردە',
+    'پانزە',
+    'شانزە',
+    'حەڤە',
+    'هەژدە',
+    'نۆزدە',
   ]
-  const tens = ['twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
-  const hundred = 'hundred'
-  const thousand = 'thousand'
-  const million = 'million'
+  const tens = ['بیست', 'سی', 'چل', 'پەنجا', 'شەست', 'حەفتا', 'هەشتا', 'نەوە']
+  const hundred = 'سەد'
+  const thousand = 'هەزار'
+  const million = 'ملیۆن'
 
   if (num < 20) {
-    return english[num]
+    return kurdish[num]
   }
 
   if (num < 100) {
-    return tens[Math.floor(num / 10) - 2] + '-' + english[num % 10]
+    return tens[Math.floor(num / 10) - 2] + '-' + kurdish[num % 10]
   }
 
   if (num < 1000) {
-    return english[Math.floor(num / 100)] + ' ' + hundred + ' ' + numberToText(num % 100)
+    return kurdish[Math.floor(num / 100)] + ' ' + hundred + ' ' + numberToText(num % 100)
   }
 
   if (num < 1000000) {
@@ -48,16 +48,3 @@ export function numberToText(num: number): string {
 
   return ''
 }
-
-// test cases
-console.log(numberToText(0)) // zero
-console.log(numberToText(1)) // one
-console.log(numberToText(2)) // two
-console.log(numberToText(3)) // three
-console.log(numberToText(4)) // four
-console.log(numberToText(5)) // five
-console.log(numberToText(6)) // six
-console.log(numberToText(7)) // seven
-console.log(numberToText(8)) // eight
-console.log(numberToText(9)) // nine
-console.log(numberToText(10)) // ten
