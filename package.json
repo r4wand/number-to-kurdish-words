@@ -1,22 +1,27 @@
 {
   "name": "number-to-kurdish-words",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "a small package to convert numbers to kurdish words, written entirely in typeScript",
   "author": "Rawand Rebwar",
   "license": "MIT",
-  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r4wand/number-to-kurdish-words.git"
+  },
+  "types": "lib",
   "main": "lib/index.js",
   "files": [
     "lib/**/*"
   ],
-  "prepare": "npm run build",
-  "prepublishOnly": "npm run lint",
-  "preversion": "npm run lint",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "prettier": "^2.4.1",
