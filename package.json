@@ -1,6 +1,6 @@
 {
   "name": "number-to-kurdish-words",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a small package to convert numbers to kurdish words, written entirely in typeScript",
   "author": "Rawand Rebwar",
   "license": "MIT",
