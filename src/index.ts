@@ -1,4 +1,4 @@
-export function numberToText(number: number, level = 0): string {
+export function numberToText(num: number, level = 0): string {
   const ones = ['یەک', 'دوو', 'سێ', 'چوار', 'پێنج', 'شەش', 'حەوت', 'هەشت', 'نۆ']
   const ten = ['دە', 'یازدە', 'دوازدە', 'سیازدە', 'چواردە', 'پازدە', 'شازدە', 'حەڤدە', 'هەژدە', 'نۆزدە']
   const tens = ['بیست', 'سی', 'چل', 'پەنجا', 'شەست', 'حەفتا', 'هەشتا', 'نەوەد']
@@ -6,12 +6,12 @@ export function numberToText(number: number, level = 0): string {
 
   let result = ''
 
-  if (number < 0) {
-    number = number * -1
-    return 'سالب ' + numberToText(number, level)
+  if (num < 0) {
+    num = num * -1
+    return 'سالب ' + numberToText(num, level)
   }
 
-  if (number === 0) {
+  if (num === 0) {
     if (level === 0) {
       return 'سفر'
     } else {
@@ -24,29 +24,26 @@ export function numberToText(number: number, level = 0): string {
     level -= 1
   }
 
-  if (number < 10) {
-    result += ones[number - 1]
-  } else if (number < 20) {
-    result += ten[number - 10]
-  } else if (number < 100) {
-    result += tens[Math.floor(number / 10) - 2] + numberToText(number % 10, level + 1)
-  } else if (number < 1000) {
-    result += hundreds[Math.floor(number / 100) - 1] + numberToText(number % 100, level + 1)
-  } else if (number < 1000000) {
+  if (num < 10) {
+    result += ones[num - 1]
+  } else if (num < 20) {
+    result += ten[num - 10]
+  } else if (num < 100) {
+    result += tens[Math.floor(num / 10) - 2] + numberToText(num % 10, level + 1)
+  } else if (num < 1000) {
+    result += hundreds[Math.floor(num / 100) - 1] + numberToText(num % 100, level + 1)
+  } else if (num < 1000000) {
     result +=
-      (number / 1000 < 2 ? '' : numberToText(Math.floor(number / 1000), level)) +
+      (num / 1000 < 2 ? '' : numberToText(Math.floor(num / 1000), level)) +
       ' هەزار' +
-      numberToText(number % 1000, level + 1)
-  } else if (number < 1000000000) {
-    result += numberToText(Math.floor(number / 1000000), level) + ' ملیۆن' + numberToText(number % 1000000, level + 1)
-  } else if (number < 1000000000000) {
+      numberToText(num % 1000, level + 1)
+  } else if (num < 1000000000) {
+    result += numberToText(Math.floor(num / 1000000), level) + ' ملیۆن' + numberToText(num % 1000000, level + 1)
+  } else if (num < 1000000000000) {
+    result += numberToText(Math.floor(num / 1000000000), level) + ' میلیارد' + numberToText(num % 1000000000, level + 1)
+  } else if (num < 1000000000000000) {
     result +=
-      numberToText(Math.floor(number / 1000000000), level) + ' میلیارد' + numberToText(number % 1000000000, level + 1)
-  } else if (number < 1000000000000000) {
-    result +=
-      numberToText(Math.floor(number / 1000000000000), level) +
-      ' تریلیۆن' +
-      numberToText(number % 1000000000000, level + 1)
+      numberToText(Math.floor(num / 1000000000000), level) + ' تریلیۆن' + numberToText(num % 1000000000000, level + 1)
   }
   return result
 }
